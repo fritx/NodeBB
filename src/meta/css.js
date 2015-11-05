@@ -185,6 +185,10 @@ module.exports = function(Meta) {
 				return;
 			}
 
+			// 去除fonts.google.com
+			lessOutput.css = lessOutput.css.replace('@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700");', '');
+			lessOutput.css = lessOutput.css.replace('@import url(//fonts.googleapis.com/css?family=Roboto:300,400,500,700);', '');
+
 			Meta.css[destination] = lessOutput.css;
 
 			// Save the compiled CSS in public/ so things like nginx can serve it
